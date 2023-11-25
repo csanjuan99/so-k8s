@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment  # Tipo de recurso
+metadata:
+  name: app-2 # Nombre del deployment
+spec:
+  replicas: 4 # Promedio de instacias que hay de una imagen 
+  selector:
+    matchLabels:
+      app: app-2
+  template:
+    metadata:
+      labels:
+        app: app-2
+    spec:
+      containers:
+        - name: app-2
+          image: paularguello07/app-2
+          ports:
+            - containerPort: 3001  # Actualiza el puerto del contenedor a 3000
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "0.5"
+              memory: "256Mi"
